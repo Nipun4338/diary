@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Cuprum");
+h3 {
+  text-align: center;
+  font-family: "Cuprum", sans-serif;
+  font-size: 2.5em;
+}
+
+.notepad-container {
+  width: 100%;
+  display: block;
+  float: left;
+  margin: 0 auto;
+}
+.notepad-container textarea {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 2em;
+  height: 60vh;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size-adjust: auto;
+}
+
+button#save {
+  width: 90%;
+  display: block;
+  margin: 1.5em auto 1em auto;
+  height: 2.5em;
+}
+
+.time {
+  text-align: center;
+  font-weight: bolder;
+  color: green;
+}
