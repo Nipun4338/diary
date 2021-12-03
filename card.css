@@ -87,6 +87,8 @@ body {
   position: absolute;
   font-weight: bolder;
   top: 10px;
+  left: 0;
+  right: 0;
 }
 
 .card .story{
@@ -107,6 +109,8 @@ body {
   font-size: 14px;
   position: absolute;
   bottom: 10px;
+  left: 0;
+  right: 0;
 }
 
 .card .rating{

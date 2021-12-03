@@ -57,13 +57,13 @@ if($noOfRows){
         <div class="rating">
           Rating: <?php echo $row1["rating"]; ?>
         </div>
-        <div class="story">
+        <div class="story" style="left:0">
           <?php echo html_entity_decode(nl2br($row1["story"])); ?>
         </div>
         <div class="privacy">
           Privacy: <?php echo $row1["diary_status"]; ?>
         </div>
-        <div class="">
+        <div class="date2">
           Last Modified: <?php echo date('M j, Y g:i A', strtotime($row1["modified_date"])) ?>
         </div>
       <?php

@@ -139,9 +139,8 @@ justify-content: space-around;">
        {
        foreach ($data as $row1) {
         ?>
-       <div class="card">
+       <div class="card" onclick="document.location='read?id=<?php echo $row1['diary_id']?>'">
          <div class="container-fluid">
-           <a href="read?id=<?php echo $row1['diary_id']?>">
            <div class="title">
              <?php echo $row1["diary_name"]; ?>
            </div>
@@ -154,7 +153,6 @@ justify-content: space-around;">
            <div class="rating">
              <?php echo $row1["rating"] ?>
            </div>
-           </a>
          </div>
         </div>
 
