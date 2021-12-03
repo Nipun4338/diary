@@ -27,10 +27,37 @@ include('database/dbconfig.php');
       <P ID="time">--:--:-- --</P>
     </DIV>
     <div class="notepad-container">
-    <textarea class="input" rows="10" cols="10" name='noteInput' placeholder="Write something...."></textarea>
-    <!-- Save note and append to list --><button id="save">Save</button>
-</div>
-
+    <form action="save.php" method="POST">
+    <input style="width: 90%;
+      display: block;
+      margin: 0 auto;
+      padding: 10px;" type="text" class="form-control" placeholder="Title (optional)" name="title">
+    <textarea class="input" rows="10" cols="10" name='noteInput' placeholder="Write something...." required></textarea>
+    <div class="input-group mb-3" style="width: 90%;margin: 1em auto;">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Rate</label>
+        </div>
+        <select class="custom-select" id="rating" name="rating">
+          <option selected value="0">Choose...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+    </div>
+    <div class="input-group mb-3" style="width: 90%;margin: 1em auto;">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect02">Privacy</label>
+        </div>
+        <select class="custom-select" id="privacy" name="privacy">
+          <option selected value="private">Private</option>
+          <option value="public">Public</option>
+        </select>
+    </div>
+    <!-- Save note and append to list --><button name="save" id="save">Save</button>
+  </div>
+</form>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
   </body>
 </html>

@@ -10,18 +10,18 @@ h3 {
   display: block;
   float: left;
   margin: 0 auto;
+  font-weight: bold;
+  font-family: monospace;
+  font-size-adjust: auto;
 }
 .notepad-container textarea {
   width: 90%;
   display: block;
   margin: 0 auto;
-  margin-top: 2em;
+  margin-top: 1em;
   height: 60vh;
   padding: 10px;
   font-size: 18px;
-  font-weight: bold;
-  font-family: monospace;
-  font-size-adjust: auto;
 }
 
 button#save {

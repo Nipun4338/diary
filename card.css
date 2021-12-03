@@ -1,0 +1,139 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 45vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+body {
+  background: #212534;
+  align-items: center;
+}
+
+
+.card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 100%);
+  cursor: pointer;
+  font-family: cursive;
+}
+
+.card:hover {
+  color: rgb(88 199 250 / 30%);
+  transition: color 1s;
+}
+.card:hover:before, .card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+.card .title{
+  font-family: monospace;
+  font-size-adjust: auto;
+  text-align: center;
+  font-size: 13px;
+  position: absolute;
+  font-weight: bolder;
+  top: 10px;
+}
+
+.card .story{
+  font-family: monospace;
+  font-size-adjust: auto;
+  text-align: left;
+  font-size: 11px;
+  position: absolute;
+  font-weight: bolder;
+  top: 50px;
+}
+
+.card .date{
+  font-weight: bold;
+  font-family: monospace;
+  font-size-adjust: auto;
+  text-align: center;
+  font-size: 14px;
+  position: absolute;
+  bottom: 10px;
+}
+
+.card .rating{
+  font-weight: bold;
+  font-family: monospace;
+  font-size-adjust: auto;
+  text-align: center;
+  font-size: 15px;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+}
+
+.ellipsis {
+  display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}

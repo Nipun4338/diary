@@ -4,26 +4,26 @@ include('database/dbconfig.php');
 $success_message='';
 date_default_timezone_set("Asia/Dhaka");
 $datetime = '';
-    if(isset($_REQUEST['submit']))
-     {
-			 $datetime=date('Y-m-d H:i:s');
-			 $user_email=$_POST["email"];
-			 $user_name=$_POST["name"];
-			 $user_password=md5($_POST["password"]);
-			 $sqlCheck='select * from user where email="'.$user_email.'"';
-			 $result=mysqli_query($link,$sqlCheck);
-			 $noOfRows=mysqli_num_rows($result);
-			 if($noOfRows)
-			 {
- 					$success_message = "Already Registered!!";
-			 }
-			 else {
-				 $sqlInsert='insert into user(name,email,password,created_date)
-				 values("'.$user_name.'","'.$user_email.'","'.$user_password.'","'.$datetime.'")';
-				 $resultInsert=mysqli_query($link, $sqlInsert);
-				$success_message = 'Successfully Registered!';
-			 }
-    }
+if(isset($_REQUEST['submit']))
+ {
+	 $datetime=date('Y-m-d H:i:s');
+	 $user_email=$_POST["email"];
+	 $user_name=$_POST["name"];
+	 $user_password=md5($_POST["password"]);
+	 $sqlCheck='select * from user where email="'.$user_email.'"';
+	 $result=mysqli_query($link,$sqlCheck);
+	 $noOfRows=mysqli_num_rows($result);
+	 if($noOfRows)
+	 {
+				$success_message = "Already Registered!!";
+	 }
+	 else {
+		 $sqlInsert='insert into user(name,email,password,created_date)
+		 values("'.$user_name.'","'.$user_email.'","'.$user_password.'","'.$datetime.'")';
+		 $resultInsert=mysqli_query($link, $sqlInsert);
+		$success_message = 'Successfully Registered!';
+	 }
+}
  ?>
 
  <!DOCTYPE html>
@@ -55,7 +55,7 @@ $datetime = '';
                          </div>
                          ';
                      }
-                     else {
+                     else if($success_message!='Successfully Registered!' && $success_message != '') {
                        echo '
                        <div class="alert alert-danger" style="margin-top: 15px; text-align: center">
                        '.$success_message.'
