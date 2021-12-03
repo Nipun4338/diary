@@ -1,10 +1,7 @@
 <?php
+include("security.php");
 include('database/dbconfig.php');
-$user_id="";
-if(isset($_SESSION['user_id']))
-{
-  $user_id=$_SESSION['user_id'];
-}
+$user_id=$_SESSION['user_id'];
 if(!empty($_GET["id"])){
   $diary_id=$_GET["id"];
 }
