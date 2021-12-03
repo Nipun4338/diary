@@ -9,10 +9,10 @@ $db_username = "root";
 $db_password = "";
 $db_name = "Diary";*/
 
+$link = mysqli_connect($server_name,$db_username,$db_password,$db_name);
 $connection = mysqli_connect($server_name,$db_username,$db_password,$db_name);
-$link=mysqli_connect($server_name,$db_username,$db_password,$db_name);
 
-if(!$connection)
+if(!$link && !$connection)
 {
     die("Connection failed: " . mysqli_connect_error());
     echo '
