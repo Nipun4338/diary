@@ -12,6 +12,16 @@ if($noOfRows){
       array_push($data,$row);
   }
 }
+if(!empty($_GET['from']) && !empty($_GET['to']))
+{
+  $from=$_GET['from'];
+  $to=$_GET['to'];
+  //echo date("Y-m-d", strtotime($from));
+}
+else {
+  $from='1980-08-08';
+  $to=date("Y-m-d H:i:s");
+}
 
 if(!empty($_GET["rating"]) || !empty($_GET["date"]))
 {
@@ -19,19 +29,19 @@ if(!empty($_GET["rating"]) || !empty($_GET["date"]))
   {
     if($_GET["rating"]=="ascending" && $_GET["date"]=="ascending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' order by rating, created_date";
+      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date";
     }
     else if($_GET["rating"]=="ascending" && $_GET["date"]=="descending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' order by rating, created_date desc";
+      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date desc";
     }
     else if($_GET["rating"]=="descending" && $_GET["date"]=="ascending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' order by rating desc, created_date";
+      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date";
     }
     else if($_GET["rating"]=="descending" && $_GET["date"]=="descending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' order by rating desc, created_date desc";
+      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date desc";
     }
   }
   $result=mysqli_query($link,$sql);
@@ -62,6 +72,7 @@ if(!empty($_GET["rating"]) || !empty($_GET["date"]))
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="card.css">
   <link rel="stylesheet" href="sidebar.css">
+  <link rel="icon" href="Graphicloads-Colorful-Long-Shadow-Diary.ico">
   </head>
   <body id="main">
     <?php
@@ -84,6 +95,11 @@ if(!empty($_GET["rating"]) || !empty($_GET["date"]))
         <option selected value="ascending">Ascending</option>
         <option value="descending">Descending</option>
       </select>
+    </div>
+    <a href="#">Date Range</a>
+    <div style="width: 90%;margin: 1em auto;">
+      <input type="date" name="from" value="yyyy-mm-dd">
+      <input type="date" name="to" value="yyyy-mm-dd">
     </div>
     <div style="text-align:center">
       <button class="input-group mb-3 btn btn-info" style="width: 90%;margin: 1em auto;display: flex;

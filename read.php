@@ -4,6 +4,7 @@ include('database/dbconfig.php');
 $user_id=$_SESSION['user_id'];
 if(!empty($_GET["id"])){
   $diary_id=$_GET["id"];
+  $_SESSION["delete"]=$diary_id;
 }
 else {
   $diary_id="error";
@@ -34,6 +35,7 @@ if($noOfRows){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="card2.css">
+  <link rel="icon" href="Graphicloads-Colorful-Long-Shadow-Diary.ico">
   </head>
   <body>
     <?php
@@ -70,8 +72,34 @@ if($noOfRows){
         if($row1["user_id"]==$user_id)
         { ?>
           <button style="position: relative;margin-top:15px;" type="button" class="btn btn-info" onclick="document.location='edit?id=<?php echo $row1['diary_id'];?>'" name="edit">EDIT</button>
+          <a id="delete" href="#">Delete note</a>
       <?php  }
        ?>
+
+       <script type="text/javascript">
+		     $("a").on("click", function (e) {
+	       // Id of the element that was clicked
+      	var elementId = $(this).attr("id");
+      	if(elementId=="delete")
+      	{
+      		var r = confirm("Confirm delete?");
+      		if (r == true) {
+      			event.preventDefault();
+      			$.ajax({
+      				url:"delete_note.php",
+      				method:"POST",
+      				dataType:"json",
+      				success:function(data)
+      				{
+      					window.location.replace("./profile");
+				      }
+			     })
+          } else {
+
+        }
+	     }
+    });
+		</script>
       </div>
       </div>
     <?php }
