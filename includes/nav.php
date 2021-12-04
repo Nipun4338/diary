@@ -2,7 +2,7 @@
 <nav class = "navbar navbar-expand-lg navbar-light bg-light sticky-top shadow p-3 mb-5 bg-white rounded">
 
 	 <div class="container-fluid">
-	 <a href="profile" class = "navbar-brand" style="font-weight:bold;padding:0 0 0 3%">
+	 <a href="profile" class = "navbar-brand" style="font-weight:bold;">
 			Diary
 	</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
