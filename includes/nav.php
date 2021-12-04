@@ -10,8 +10,9 @@
 	</button>
 	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	 <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="padding: 0px 5px 0px 5px;font-weight:bold">
-			 <a class="nav-item nav-link" href = "profile"> HOME </a>
-			 <a class="nav-item nav-link" href = "addnew"> ADD NEW </a>
+			 <a class="nav-item nav-link" href = "profile"> Home </a>
+			 <a class="nav-item nav-link" href = "addnew"> Add New </a>
+			 <a class="nav-item nav-link" href = "posts"> Public Posts </a>
 			 <?php if (!isset($_SESSION["username"])) {
     		$message= '<a class="nav-item nav-link" href = "login"> LOGIN </a>';
 			}

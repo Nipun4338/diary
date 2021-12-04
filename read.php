@@ -1,7 +1,10 @@
 <?php
-include("security.php");
+include("security_public.php");
 include('database/dbconfig.php');
-$user_id=$_SESSION['user_id'];
+if(!empty($_SESSION['user_id']))
+{
+  $user_id=$_SESSION['user_id'];
+}
 if(!empty($_GET["id"])){
   $diary_id=$_GET["id"];
   $_SESSION["delete"]=$diary_id;
@@ -69,7 +72,7 @@ if($noOfRows){
           Last Modified: <?php echo date('M j, Y g:i A', strtotime($row1["modified_date"])) ?>
         </div>
       <?php
-        if($row1["user_id"]==$user_id)
+        if(!empty($user_id) && $row1["user_id"]==$user_id)
         { ?>
           <button style="position: relative;margin-top:15px;" type="button" class="btn btn-info" onclick="document.location='edit?id=<?php echo $row1['diary_id'];?>'" name="edit">EDIT</button>
           <a id="delete" href="#">Delete note</a>

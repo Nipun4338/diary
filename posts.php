@@ -3,7 +3,7 @@ include("security.php");
 include('database/dbconfig.php');
 $user_id=$_SESSION['user_id'];
 $sql="";
-$sql="SELECT * FROM diary where user_id='$user_id' order by created_date desc";
+$sql="SELECT * FROM diary where diary_status='public' order by created_date desc";
 $result=mysqli_query($link,$sql);
 $data=array();
 $noOfRows=mysqli_num_rows($result);
@@ -29,19 +29,19 @@ if(!empty($_GET["rating"]) || !empty($_GET["date"]))
   {
     if($_GET["rating"]=="ascending" && $_GET["date"]=="ascending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date";
     }
     else if($_GET["rating"]=="ascending" && $_GET["date"]=="descending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date desc";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date desc";
     }
     else if($_GET["rating"]=="descending" && $_GET["date"]=="ascending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date";
     }
     else if($_GET["rating"]=="descending" && $_GET["date"]=="descending")
     {
-      $sql="SELECT * FROM diary where user_id='$user_id' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date desc";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date desc";
     }
   }
   $result=mysqli_query($link,$sql);
@@ -58,7 +58,7 @@ if(!empty($_GET["rating"]) || !empty($_GET["date"]))
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-  <title>Profile | Diary</title>
+  <title>Public Posts | Diary</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale = 1.0">
 	<script src = "https://code.jquery.com/jquery-2.1.3.min.js"></script>
