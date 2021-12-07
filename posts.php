@@ -4,7 +4,7 @@ include('database/dbconfig.php');
 $user_id=$_SESSION['user_id'];
 $sql="";
 $sql="SELECT * FROM diary where diary_status='public' order by created_date desc";
-$result=mysqli_query($link,$sql);
+$result=mysqli_query($connection,$sql);
 $data=array();
 $noOfRows=mysqli_num_rows($result);
 if($noOfRows){
@@ -29,22 +29,22 @@ if(!empty($_GET["rating"]) || !empty($_GET["date"]))
   {
     if($_GET["rating"]=="ascending" && $_GET["date"]=="ascending")
     {
-      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('".$from."' as date) and cast(created_date as date)<=cast('".$to."' as date) order by rating, created_date";
     }
     else if($_GET["rating"]=="ascending" && $_GET["date"]=="descending")
     {
-      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating, created_date desc";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('".$from."' as date) and cast(created_date as date)<=cast('".$to."' as date) order by rating, created_date desc";
     }
     else if($_GET["rating"]=="descending" && $_GET["date"]=="ascending")
     {
-      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('".$from."' as date) and cast(created_date as date)<=cast('".$to."' as date) order by rating desc, created_date";
     }
     else if($_GET["rating"]=="descending" && $_GET["date"]=="descending")
     {
-      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('$from' as date) and cast(created_date as date)<=cast('$to' as date) order by rating desc, created_date desc";
+      $sql="SELECT * FROM diary where diary_status='public' and cast(created_date as date)>=cast('".$from."' as date) and cast(created_date as date)<=cast('".$to."' as date) order by rating desc, created_date desc";
     }
   }
-  $result=mysqli_query($link,$sql);
+  $result=mysqli_query($connection,$sql);
   $data=array();
   $noOfRows=mysqli_num_rows($result);
   if($noOfRows){
@@ -63,7 +63,6 @@ if(!empty($_GET["rating"]) || !empty($_GET["date"]))
 	<meta name="viewport" content="width=device-width, initial-scale = 1.0">
 	<script src = "https://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <link rel="stylesheet" href="A.assets,,_royalslider,,_royalslider.css+assets,,_royalslider,,_skins,,_default,,_rs-default.css+assets,,_royalslider,,_skins,,_minimal-white,,_rs-minimal-white.css+css,,_bootstrap.min.css+css,,_normalize.css+css,,_jquery-ui.css,Mcc.y-DhrddGnN.css.pagespeed.cf.Hfy0poW2iH.css"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

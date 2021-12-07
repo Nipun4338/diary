@@ -1,7 +1,7 @@
 <?php
 include('database/dbconfig.php');
-$query="Select * from user";
-$result=mysqli_query($link,$query);
+$query="Select * from diary where diary_id='45'";
+$result=mysqli_query($connection,$query);
 $data=array();
 
 
@@ -10,6 +10,6 @@ $data=array();
   }
 
   foreach ($data as $row1) {
-    echo $row1["user_id"];
+    echo $row1["story"];
   }
 ?>

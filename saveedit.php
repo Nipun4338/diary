@@ -12,7 +12,7 @@ if (isset($_POST["editsave"])) {
     $note=htmlspecialchars($_POST["noteInput"]);
     $rating=$_POST["rating"];
     $privacy=$_POST["privacy"];
-    $query = sprintf("Update diary set diary_name='$title', story='$note', rating='$rating', diary_status='$privacy', modified_date='$datetime' where diary_id='$diary_id'",
+    $query = sprintf("Update diary set diary_name='".$title."', story='".$note."', rating='".$rating."', diary_status='".$privacy."', modified_date='".$datetime."' where diary_id='".$diary_id."'",
     mysqli_real_escape_string($connection, $note));
     $query_run = mysqli_query($connection, $query);
 
